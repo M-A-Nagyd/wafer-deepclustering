@@ -29,7 +29,7 @@ def extract_label(label):
         label = label.tolist()
     if not isinstance(label, list) or len(label) == 0:
         return None
-    if label == [[]] or label[0][0] == 'none':
+    if label == [[]]:
         return None
     return label[0][0]
 
@@ -143,7 +143,7 @@ embeddings = np.vstack(embeddings)
 print("Embeddings shape:", embeddings.shape)
 
 # Perform clustering with KMeans
-k = 8  # Number of known failure types
+k = 9  # Number of known failure types
 print(f"Performing KMeans clustering with k={k}...")
 kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
 cluster_labels = kmeans.fit_predict(embeddings)
